@@ -6,6 +6,7 @@
 
 
 
+seed = 123
 dataset_dir = 'dataset'
 image_size = 128
 train_size = 1000
@@ -44,10 +45,12 @@ def create_dirs(output_dir):
 
 
 # Function to create a blank image and draw random objects
-def create_random_object_image(image_size=(32, 32)):
+def create_random_object_image(image_size=(32, 32), seed=None):
 
     import random
     import numpy as np
+
+    random.seed(seed)
 
     min_size = np.min(image_size)//20
     max_size = np.min(image_size)//2
@@ -109,7 +112,7 @@ def create_object_image(image_size, object_center, object_size, object_thickness
 
 
 # Función para generar n imágenes
-def generate_images(output_dir, image_size, train_size, validation_size, test_size):
+def generate_images(output_dir, image_size, train_size, validation_size, test_size, seed=None):
 
     from pathlib import Path
     import cv2
@@ -129,7 +132,7 @@ def generate_images(output_dir, image_size, train_size, validation_size, test_si
 
         # Generar y guardar las imágenes
         for i in range(size):
-            image_params = create_random_object_image(image_size)
+            image_params = create_random_object_image(image_size, seed)
             image = image_params[0]
             keys = ['size', 'center', 'thickness']
             params = image_params[1:]
@@ -137,12 +140,12 @@ def generate_images(output_dir, image_size, train_size, validation_size, test_si
             info['set'] = subset
             info['index'] = i
             info['params'] = params
-            filename = subset_dir / f"{subset}_{i}.png"
+            filename = subset_dir / f"{subset}_{i:010d}.png"
             cv2.imwrite(str(filename), image)
             infos.append(info)
 
     # Save the variable to a file
-    with open(output_dir + '/images/dataset_info.pkl', 'wb') as file:  # 'wb' means write in binary mode
+    with open(output_dir + '/dataset_info.pkl', 'wb') as file:  # 'wb' means write in binary mode
         pickle.dump(infos, file)
 
     print(f"Imágenes generadas y guardadas en '{output_dir}'")
@@ -169,7 +172,8 @@ if __name__ == "__main__":
                             image_size=(image_size,image_size),
                             train_size=1000,
                             validation_size=100,
-                            test_size=100)
+                            test_size=100,
+                            seed=seed,)
 
 
 

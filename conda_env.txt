@@ -1,7 +1,8 @@
-conda create -p ./conda_env python
+conda create -p ./conda_env python=3.9
 conda activate ./conda_env
 
 conda install ipython
 conda install -c conda-forge tensorflow
 
 conda install pillow
+conda install -c menpo opencv

@@ -1,0 +1,6 @@
+# Ignore conda environment folder
+conda_env/
+
+# Other files and folders to ignore
+__pycache__/
+*.pyc

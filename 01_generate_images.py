@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-from config import seed, dataset_dir, image_size, objects_types
+from config import seed, dataset_dir, image_size, objects_types, train_size, validation_size, test_size
 
 import random
 import numpy as np
@@ -184,9 +184,9 @@ if __name__ == "__main__":
     # Llamada a la función para generar las imágenes
     infos = generate_images(dataset_dir,
                             image_size=(image_size,image_size),
-                            train_size=1000,
-                            validation_size=100,
-                            test_size=100,
+                            train_size=train_size,
+                            validation_size=validation_size,
+                            test_size=test_size,
                             seed=seed,)
 
     for info in infos[:5]:

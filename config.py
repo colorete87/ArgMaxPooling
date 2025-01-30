@@ -13,11 +13,11 @@ dataset_dir = 'dataset'
 
 image_size = 128
 
-train_size = 1000
-validation_size = 100
-test_size = 100
+train_size = 10000
+validation_size = 1000
+test_size = 1000
 epochs = 20
-batch_size = 32
+batch_size = 128
 
 
 objects_types = [

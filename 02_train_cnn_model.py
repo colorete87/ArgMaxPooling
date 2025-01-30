@@ -31,6 +31,9 @@ def create_simple_cnn(input_shape, num_classes=len(objects_types)):
     # Fully connected layer
     model.add(layers.Dense(128, activation='relu'))
 
+    # Fully connected layer
+    model.add(layers.Dense(256, activation='relu'))
+
     # Output layer
     if num_classes == 2:
         model.add(layers.Dense(1, activation='sigmoid'))  # For binary classification

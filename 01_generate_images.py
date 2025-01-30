@@ -5,6 +5,7 @@ from config import seed, dataset_dir, image_size, objects_types, train_size, val
 
 import random
 import numpy as np
+from tqdm import tqdm  # Import tqdm for progress tracking
 
 
 def create_dirs(output_dir):
@@ -133,12 +134,12 @@ def generate_images(output_dir, image_size, train_size, validation_size, test_si
     infos = list()
 
     # Crear carpetas si no existen
-    for subset, size in sizes.items():
+    for subset, size in tqdm(sizes.items(), desc="Processing Subsets", unit="subset"):
         subset_dir = Path(output_dir + '/images') / subset
         subset_dir.mkdir(parents=True, exist_ok=True)
 
         # Generar y guardar las imágenes
-        for i in range(size):
+        for i in tqdm(range(size), desc="Processing Images", unit="image"):
             image_params = create_random_object_image(image_size, seed)
             image = image_params[0]
             #keys = ['type', 'size', 'center', 'thickness']

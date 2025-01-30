@@ -102,7 +102,10 @@ if __name__ == "__main__":
 
     
     # Save the trained model
-    model.save('trained_cnn_model.h5')
+    from pathlib import Path
+    path = Path('./model/')
+    path.mkdir(parents=True, exist_ok=True)
+    model.save('./model/trained_cnn_model.h5')
 
 
 

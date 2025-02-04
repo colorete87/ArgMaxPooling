@@ -97,7 +97,7 @@ if __name__ == "__main__":
     df = pd.DataFrame()  # Create an empty DataFrame to store the metadata
 
     # Define the model path
-    model_path = Path("./model/trained_cnn_model.h5")
+    model_path = Path("./models/trained_cnn_model.h5")
 
     # Check if the model file exists
     if model_path.exists():

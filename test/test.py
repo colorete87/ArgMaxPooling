@@ -30,7 +30,7 @@ model = keras.Sequential([
 model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
 
 # Train the model
-history = model.fit(x_train, y_train, epochs=10, batch_size=128, validation_data=(x_test, y_test))
+history = model.fit(x_train, y_train, epochs=40, batch_size=4096, validation_data=(x_test, y_test))
 
 # Evaluate the model
 test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
@@ -42,5 +42,6 @@ plt.plot(history.history["val_accuracy"], label="Validation Accuracy")
 plt.xlabel("Epoch")
 plt.ylabel("Accuracy")
 plt.legend()
-plt.show()
+plt.savefig('./test.png')
+plt.close()
 

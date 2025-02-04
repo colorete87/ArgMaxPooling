@@ -31,6 +31,9 @@ def create_simple_cnn(input_shape, num_classes=len(objects_types)):
     # Fully connected layer
     model.add(layers.Dense(128, activation='relu'))
 
+    # Fully connected layer
+    model.add(layers.Dense(256, activation='relu'))
+
     # Output layer
     if num_classes == 2:
         model.add(layers.Dense(1, activation='sigmoid'))  # For binary classification
@@ -103,9 +106,9 @@ if __name__ == "__main__":
     
     # Save the trained model
     from pathlib import Path
-    path = Path('./model/')
+    path = Path('./models/')
     path.mkdir(parents=True, exist_ok=True)
-    model.save('./model/trained_cnn_model.h5')
+    model.save('./models/trained_cnn_model.h5')
 
 
 

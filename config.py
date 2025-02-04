@@ -11,20 +11,20 @@ seed = 123
 
 dataset_dir = 'dataset'
 
-image_size = 128
+image_size = 32
 
-train_size = 10000
-validation_size = 1000
-test_size = 1000
+train_size = 100000
+validation_size = 10000
+test_size = 10000
 epochs = 20
-batch_size = 128
+batch_size = 1024
 
 
 objects_types = [
         'circle',
         'square',
-        'cross',
-        'rectangle',
+        #'cross',
+        #'rectangle',
         ]
 num_classes = len(objects_types)
 
